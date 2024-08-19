@@ -29,15 +29,17 @@ const PersonPhoneForm: React.FC<PersonPhoneFormProps> = ({
 
   useEffect(() => {
     if (selectedPersonPhone) {
+      // Set static values for editing
       setBussinessentityId(selectedPersonPhone.bussinessentity_id);
       setPhonenumberTypeId(selectedPersonPhone.phonenumbertype_id);
       setPhonenumber(selectedPersonPhone.phonenumber);
-      setPhonenumberNovo(selectedPersonPhone.phonenumber); // Configura o campo novo com o valor atual para edição
+      setPhonenumberNovo(selectedPersonPhone.phonenumber); // Set the current phone number as default for editing
     } else {
+      // Reset values for adding new
       setBussinessentityId("");
       setPhonenumberTypeId("");
       setPhonenumber("");
-      setPhonenumberNovo(""); // Limpa o campo novo para adição
+      setPhonenumberNovo(""); // Clear new phone number for adding
     }
   }, [selectedPersonPhone]);
 
@@ -49,7 +51,7 @@ const PersonPhoneForm: React.FC<PersonPhoneFormProps> = ({
       onAddPersonPhone({
         bussinessentity_id: Number(bussinessentityId),
         phonenumbertype_id: Number(phonenumberTypeId),
-        phonenumber: phonenumber, // Usa o número atual na adição
+        phonenumber, // Use the current phone number for adding
       });
     }
     onClear();
@@ -63,23 +65,35 @@ const PersonPhoneForm: React.FC<PersonPhoneFormProps> = ({
       <input
         type="number"
         value={bussinessentityId}
-        readOnly
-        className="border border-gray-300 rounded px-2 py-1 mr-2 bg-gray-100"
+        onChange={(e) => setBussinessentityId(Number(e.target.value))}
+        className={`border border-gray-300 rounded px-2 py-1 mr-2 ${
+          selectedPersonPhone ? "bg-gray-100" : ""
+        }`}
         placeholder="Bussiness Entity ID"
+        readOnly={!!selectedPersonPhone} // Make read-only if editing
+        required={!selectedPersonPhone} // Required only if adding
       />
       <input
         type="number"
         value={phonenumberTypeId}
-        readOnly
-        className="border border-gray-300 rounded px-2 py-1 mr-2 bg-gray-100"
+        onChange={(e) => setPhonenumberTypeId(Number(e.target.value))}
+        className={`border border-gray-300 rounded px-2 py-1 mr-2 ${
+          selectedPersonPhone ? "bg-gray-100" : ""
+        }`}
         placeholder="Phone Number Type ID"
+        readOnly={!!selectedPersonPhone} // Make read-only if editing
+        required={!selectedPersonPhone} // Required only if adding
       />
       <input
         type="text"
         value={phonenumber}
-        readOnly
-        className="border border-gray-300 rounded px-2 py-1 mr-2 bg-gray-100"
+        onChange={(e) => setPhonenumber(e.target.value)}
+        className={`border border-gray-300 rounded px-2 py-1 mr-2 ${
+          selectedPersonPhone ? "bg-gray-100" : ""
+        }`}
         placeholder="Phone Number"
+        readOnly={!!selectedPersonPhone} // Make read-only if editing
+        required={!selectedPersonPhone} // Required only if adding
       />
       {selectedPersonPhone && (
         <input
