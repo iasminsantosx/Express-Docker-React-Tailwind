@@ -4,7 +4,7 @@ Criação de uma Tela de Frontend com React, TypeScript e tailwind e a lib shadc
 
 ## :man_mechanic: Linguagens e Ferramentas
 
-![Skills](https://skillicons.dev/icons?i=nodejs,js,express,react,typescript)
+![Skills](https://skillicons.dev/icons?i=nodejs,js,express,react,typescript,docker)
 
 ## :ladder: Fucionalidades do Projeto
 Frontend e Backend
