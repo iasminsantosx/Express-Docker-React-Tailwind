@@ -12,6 +12,8 @@ Frontend e Backend
 - [ ] Cadastrar PersonPhone
 - [ ] Editar PersonPhone
 - [ ] Deletar PersonPhone
+
+      
   Apenas no backend
 - [ ] Cadastrar bussinessentity
 - [ ] Deletar bussinessentity
